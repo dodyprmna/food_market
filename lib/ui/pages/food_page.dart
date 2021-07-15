@@ -96,8 +96,8 @@ class _FoodPageState extends State<FoodPage> {
                     List<Food> foods = (selectedIndex == 0)
                         ? mockFoods
                         : (selectedIndex == 1)
-                            ? 'Popular Body'
-                            : 'Recomended Body';
+                            ? []
+                            : [];
                     return Column(
                       children: foods
                           .map((e) => Padding(
@@ -114,7 +114,10 @@ class _FoodPageState extends State<FoodPage> {
                   )
                 ],
               ),
-            )
+            ),
+            // SizedBox(
+            //   height: 80,
+            // )
             //// List Foot Vertical
           ],
         )
