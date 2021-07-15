@@ -8,9 +8,9 @@ class FoodPage extends StatefulWidget {
 }
 
 class _FoodPageState extends State<FoodPage> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    int selectedIndex = 0;
     return ListView(
       children: [
         Column(
