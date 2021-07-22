@@ -1,5 +1,7 @@
 part of 'models.dart';
 
+enum FoodType { new_food, popular, recomended }
+
 class Food extends Equatable {
   final int id;
   final String picturePath;
@@ -8,6 +10,7 @@ class Food extends Equatable {
   final String ingredients;
   final int price;
   final double rate;
+  final List<FoodType> types;
 
   Food(
       {this.id,
@@ -16,7 +19,8 @@ class Food extends Equatable {
       this.description,
       this.ingredients,
       this.price,
-      this.rate});
+      this.rate,
+      this.types = const []});
 
   @override
   List<Object> get props =>
@@ -32,7 +36,8 @@ List<Food> mockFoods = [
       description: "Ayam geprek adalah menu ayam dengan sambal yang digeprek",
       ingredients: "Bawang Putih, Bawang Merah, Cabai",
       price: 15000,
-      rate: 4.4),
+      rate: 4.4,
+      types: [FoodType.new_food, FoodType.recomended, FoodType.popular]),
   Food(
       id: 2,
       picturePath:
@@ -50,15 +55,16 @@ List<Food> mockFoods = [
       description: "Sate kelapa dalah sate yang dibalut dengar parutan kelapa",
       ingredients: "Bawang Putih, Bawang Merah, Cabai",
       price: 15000,
-      rate: 4.4),
+      rate: 4.4,
+      types: [FoodType.new_food]),
   Food(
       id: 4,
       picturePath:
           "https://asset.kompas.com/crops/1n1phX0hDAebkJtxIBYn_lPcLKc=/0x0:1000x667/750x500/data/photo/2020/07/29/5f211052c70f7.jpg",
       name: "Nasi Goreng Kambing",
-      description:
-          "Nasing goreng kambing adalah nasi yang digoreng dengan toping irisan daging kambing",
+      description: "Nasing goreng kambing adalah nasi yang digoreng dengan toping irisan daging kambing",
       ingredients: "Bawang putih, kecap, irisan daging kambing, daun bawang",
       price: 15000,
-      rate: 4.4),
+      rate: 4.4,
+      types: [FoodType.recomended]),
 ];
