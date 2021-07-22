@@ -31,8 +31,8 @@ class _MainPageState extends State<MainPage> {
                   },
                   children: [
                 Center(child: FoodPage()),
-                Center(child: Text('Order')),
-                Center(child: Text('Profile'))
+                Center(child: OrderHistoryPage()),
+                Center(child: ProfilePage())
               ])),
           Align(
             alignment: Alignment.bottomCenter,

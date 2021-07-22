@@ -48,7 +48,9 @@ class _FoodPageState extends State<FoodPage> {
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
                             image: NetworkImage(
-                                "https://trenzindonesia.com/wp-content/uploads/2019/12/Kezia-SB.jpg"),
+                                (context.read<UserCubit>().state as UserLoaded)
+                                    .user
+                                    .picturePath),
                             fit: BoxFit.cover)),
                   )
                 ],
@@ -69,7 +71,19 @@ class _FoodPageState extends State<FoodPage> {
                                 left:
                                     (e == mockFoods.first) ? defaultMargin : 0,
                                 right: defaultMargin),
-                            child: FoodCard(e)))
+                            child: GestureDetector(
+                                onTap: () {
+                                  Get.to(FoodDetailPage(
+                                      transaction: Transaction(
+                                          food: e,
+                                          user: (context.read<UserCubit>().state
+                                                  as UserLoaded)
+                                              .user),
+                                      onBackButtonPressed: () {
+                                        Get.back();
+                                      }));
+                                },
+                                child: FoodCard(e))))
                         .toList(),
                   )
                 ],
@@ -100,11 +114,25 @@ class _FoodPageState extends State<FoodPage> {
                             : [];
                     return Column(
                       children: foods
-                          .map((e) => Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    defaultMargin, 0, defaultMargin, 16),
-                                child: FoodListItem(
-                                    food: e, itemWidth: listItemWidth),
+                          .map((e) => GestureDetector(
+                                onTap: () {
+                                  Get.to(FoodDetailPage(
+                                    onBackButtonPressed: () {
+                                      Get.back();
+                                    },
+                                    transaction: Transaction(
+                                        food: e,
+                                        user: (context.read<UserCubit>().state
+                                                as UserLoaded)
+                                            .user),
+                                  ));
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                      defaultMargin, 0, defaultMargin, 16),
+                                  child: FoodListItem(
+                                      food: e, itemWidth: listItemWidth),
+                                ),
                               ))
                           .toList(),
                     );
