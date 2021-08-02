@@ -99,7 +99,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              quantity = max(1, quantity - 1);
+                              this.quantity = max(1, quantity - 1);
                             });
                           },
                           child: Container(
@@ -125,7 +125,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              quantity = min(999, quantity + 1);
+                              this.quantity = min(999, quantity + 1);
                             });
                           },
                           child: Container(
@@ -190,7 +190,15 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                           width: 163,
                           height: 45,
                           child: RaisedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.to(PaymentPage(
+                                quantity: quantity,
+                                transaction: widget.transaction.copyWith(
+                                    quantity: quantity,
+                                    total: quantity *
+                                        widget.transaction.food.price),
+                              ));
+                            },
                             elevation: 0,
                             color: mainColor,
                             shape: RoundedRectangleBorder(

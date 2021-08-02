@@ -4,8 +4,9 @@ class UserServices {
   static Future<ApiReturnValue<User>> signIn(
       String email, String password) async {
     await Future.delayed(Duration(microseconds: 500));
-    // return ApiReturnValue(value: mockUser);
+    return ApiReturnValue(value: mockUser);
 
-    return ApiReturnValue(message: 'Wrong password');
+    // return ApiReturnValue(message: 'Wrong password');
+    // 316
   }
 }

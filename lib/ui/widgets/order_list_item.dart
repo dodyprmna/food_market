@@ -47,7 +47,7 @@ class OrderListItem extends StatelessWidget {
             children: [
               Text(
                 convertDateTime(transaction.dateTime),
-                style: greyFontStyle.copyWith(fontSize: 15),
+                style: greyFontStyle.copyWith(fontSize: 10),
               ),
               (transaction.status == TransactionStatus.canceled)
                   ? Text('Canceled',
