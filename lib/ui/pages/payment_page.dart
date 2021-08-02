@@ -2,10 +2,8 @@ part of 'pages.dart';
 
 class PaymentPage extends StatefulWidget {
   final Transaction transaction;
-  final User user;
-  final int quantity;
 
-  PaymentPage({this.transaction, this.quantity, this.user});
+  PaymentPage({this.transaction});
 
   @override
   _PaymentPageState createState() => _PaymentPageState();
@@ -86,7 +84,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         )
                       ],
                     ),
-                    Text(widget.quantity.toString() + ' item',
+                    Text(widget.transaction.quantity.toString() + ' item',
                         style: greyFontStyle.copyWith(fontSize: 13)),
                   ],
                 ),
@@ -390,6 +388,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 .read<TransactionCubit>()
                                 .submitTransaction(widget.transaction.copyWith(
                                     dateTime: DateTime.now(),
+                                    quantity: widget.transaction.quantity,
                                     total: (widget.transaction.total * 1.1)
                                             .toInt() +
                                         50000));
@@ -397,7 +396,7 @@ class _PaymentPageState extends State<PaymentPage> {
                               Get.to(SuccessOrderPage());
                             } else {
                               setState(() {
-                                isLoading == false;
+                                isLoading = false;
                               });
                               Get.snackbar("", "",
                                   backgroundColor: "D9435E".toColor(),

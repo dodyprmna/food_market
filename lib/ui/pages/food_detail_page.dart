@@ -192,9 +192,8 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                           child: RaisedButton(
                             onPressed: () {
                               Get.to(PaymentPage(
-                                quantity: quantity,
                                 transaction: widget.transaction.copyWith(
-                                    quantity: quantity,
+                                    quantity: this.quantity,
                                     total: quantity *
                                         widget.transaction.food.price),
                               ));

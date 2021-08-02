@@ -31,7 +31,7 @@ class OrderListItem extends StatelessWidget {
                 overflow: TextOverflow.clip,
               ),
               Text(
-                "${transaction.quantity} item(s) + " +
+                "${transaction.quantity} item(s) " +
                     NumberFormat.currency(
                             symbol: 'IDR ', decimalDigits: 0, locale: 'id-ID')
                         .format(transaction.total),

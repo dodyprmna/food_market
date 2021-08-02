@@ -31,7 +31,7 @@ class Transaction extends Equatable {
     return Transaction(
         id: id ?? this.id,
         food: food ?? this.food,
-        quantity: this.quantity,
+        quantity: quantity ?? this.quantity,
         total: total ?? this.total,
         dateTime: dateTime ?? this.dateTime,
         status: status ?? this.status,
